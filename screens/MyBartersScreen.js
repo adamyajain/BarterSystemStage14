@@ -12,7 +12,8 @@ export default class MyBartersScreen extends Component {
      super()
      this.state = {
        userId : firebase.auth().currentUser.email,
-       allBarters : []
+       allBarters : [],
+       allNotifications : []
      }
      this.requestRef= null
    }
@@ -27,6 +28,23 @@ export default class MyBartersScreen extends Component {
        });
      })
    }
+   getNotifications = () => {
+     this.requestRef = db.collection("all_notifications")
+     .where("notification_status" , "==" , "unread")
+     .where("targeted_user_id" , "==" , this.state.userId)
+     .onSnapshot((snapshot) => {
+       var allNotifications = []
+       snapshot.docs.map((doc) => {
+         var notification = doc.data()
+         notification["doc_id"] = doc.id
+         allNotifications.push(notification)
+       });
+       this.setState({
+         allNotifications : allNotifications
+       });
+     })
+   }
+
 
    keyExtractor = (item, index) => index.toString()
 
@@ -57,22 +75,24 @@ export default class MyBartersScreen extends Component {
 
    render(){
      return(
-       <View style={{flex:1}}>
-         <MyHeader navigation={this.props.navigation} title="My Barters"/>
-         <View style={{flex:1}}>
+       <View style = {{flex : 1}}>
+         <View style = {{flex : 0.1}}>
+           <MyHeader title = {"Notifications"} navigation = {this.props.navigation} />
+         </View>
+         <View style = {{flex : 0.9}}>
            {
-             this.state.allBarters.length === 0
+             this.state.allNotifications.length === 0
              ?(
-               <View style={styles.subtitle}>
-                 <Text style={{ fontSize: 20}}>List of all Barters</Text>
+               <View style={{flex : 1, justifyContent : 'center', alignItems : 'center'}}>
+                 <Text style = {{fontSize : 25}}>You Have No Notifications</Text>
                </View>
              )
              :(
-               <FlatList
-                 keyExtractor={this.keyExtractor}
-                 data={this.state.allBarters}
-                 renderItem={this.renderItem}
-               />
+               <FlatList 
+                keyExtractor = {this.keyExtractor}
+                data = {this.state.allNotifications}
+                renderItem = {this.renderItem}
+              />
              )
            }
          </View>
