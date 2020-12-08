@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity,TextInput, Alert, Modal,ScrollView,KeyboardAvoidingView } from 'react-native';
+import { View,
+         StyleSheet,
+         Text, 
+         Image, 
+         TouchableOpacity,
+         Input, 
+         Alert, 
+         Modal,
+         ScrollView,
+         KeyboardAvoidingView } from 'react-native';
+import {Input} from 'react-native-elements';
 import BarterAnimation from '../components/BarterAnimationScreen.js';
 
 import db from '../config';
@@ -88,8 +98,8 @@ export default class WelcomeScreen extends Component {
           <Text
             style={{justifyContent:'center', alignSelf:'center', fontSize:30,color:'#ff5722',margin:50}}
             >Registration</Text>
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"First Name"}
             maxLength ={8}
             onChangeText={(text)=>{
@@ -98,8 +108,8 @@ export default class WelcomeScreen extends Component {
               })
             }}
           />
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"Last Name"}
             maxLength ={8}
             onChangeText={(text)=>{
@@ -108,8 +118,8 @@ export default class WelcomeScreen extends Component {
               })
             }}
           />
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"Mobile Number"}
             maxLength ={10}
             keyboardType={'numeric'}
@@ -119,8 +129,8 @@ export default class WelcomeScreen extends Component {
               })
             }}
           />
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"Address"}
             multiline = {true}
             onChangeText={(text)=>{
@@ -129,8 +139,8 @@ export default class WelcomeScreen extends Component {
               })
             }}
           />
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"Username"}
             keyboardType ={'email-address'}
             onChangeText={(text)=>{
@@ -138,8 +148,8 @@ export default class WelcomeScreen extends Component {
                 username: text
               })
             }}
-          /><TextInput
-            style={styles.formTextInput}
+          /><Input
+            style={styles.formInput}
             placeholder ={"Password"}
             secureTextEntry = {true}
             onChangeText={(text)=>{
@@ -147,8 +157,8 @@ export default class WelcomeScreen extends Component {
                 password: text
               })
             }}
-          /><TextInput
-            style={styles.formTextInput}
+          /><Input
+            style={styles.formInput}
             placeholder ={"Confrim Password"}
             secureTextEntry = {true}
             onChangeText={(text)=>{
@@ -201,7 +211,7 @@ export default class WelcomeScreen extends Component {
                         fontWeight:'bold',
                         marginLeft:55}}>USERNAME</Text>
           <View style={{alignItems:'center'}}>
-            <TextInput
+            <Input
             style={styles.loginBox}
             keyboardType ={'email-address'}
             onChangeText={(text)=>{
@@ -216,7 +226,7 @@ export default class WelcomeScreen extends Component {
                         fontWeight:'bold',
                         marginLeft:55}}>PASSWORD</Text>
           <View style={{alignItems:'center'}}>
-            <TextInput
+            <Input
               style={styles.loginBox}
               secureTextEntry = {true}
               onChangeText={(text)=>{
@@ -231,7 +241,7 @@ export default class WelcomeScreen extends Component {
                         fontWeight:'bold',
                         marginLeft:55}}>Country Code</Text>
           <View style={{alignItems:'center'}}>
-            <TextInput
+            <Input
              style={styles.loginBox}
              placeholder={"Enter Country Currency Code"}
              maxLength={8}
@@ -313,7 +323,7 @@ const styles = StyleSheet.create({
     marginTop:80,
     marginBottom:80,
   },
-  formTextInput:{
+  formInput:{
     width:"75%",
     height:35,
     alignSelf:'center',

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, FlatList,Text } from 'react-native';
+import { StyleSheet,
+         View,
+         FlatList,
+         Text } from 'react-native';
 import { ListItem, Icon } from 'react-native-elements';
 import firebase from 'firebase';
 import MyHeader from '../components/MyHeader';

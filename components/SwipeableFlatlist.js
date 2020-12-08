@@ -11,7 +11,7 @@ import {
     ListItem,
     Icon
 } from 'react-native-elements'
-import { SwipeListView } from 'react-native-swipe=list-view'
+import { SwipeListView } from 'react-native-swipe-list-view'
 
 export default class SwipableFlatlist extends Component {
     constructor(props){

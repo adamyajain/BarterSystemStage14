@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput,KeyboardAvoidingView,TouchableOpacity,Alert, ToastAndroid } from 'react-native';
+import { View,
+         StyleSheet,
+         Text,
+         KeyboardAvoidingView,
+         TouchableOpacity,
+         Alert,
+         ToastAndroid } from 'react-native';
+import {Input} from 'react-native-elements'
 import firebase from 'firebase';
 import db from '../config';
 import MyHeader from '../components/MyHeader'
@@ -206,8 +213,8 @@ export default class Exchange extends Component {
         <View style={{flex:1}}>
         <MyHeader title="Add Item" navigation ={this.props.navigation}/>
         <KeyboardAvoidingView style={{flex:1,justifyContent:'center', alignItems:'center'}}>
-          <TextInput
-            style={styles.formTextInput}
+          <Input
+            style={styles.formInput}
             placeholder ={"Item Name"}
             maxLength ={8}
             onChangeText={(text)=>{
@@ -217,10 +224,10 @@ export default class Exchange extends Component {
             }}
             value={this.state.itemName}
           />
-          <TextInput
+          <Input
             multiline
             numberOfLines={4}
-            style={[styles.formTextInput,{height:100}]}
+            style={[styles.formInput,{height:100}]}
             placeholder ={"Description"}
             onChangeText={(text)=>{
               this.setState({
@@ -244,7 +251,7 @@ export default class Exchange extends Component {
 }
 
 const styles = StyleSheet.create({
-  formTextInput:{
+  formInput:{
     width:"75%",
     height:35,
     alignSelf:'center',

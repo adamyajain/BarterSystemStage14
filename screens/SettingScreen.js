@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import {View,Text, KeyboardAvoidingView,TextInput,StyleSheet,ScrollView,TouchableOpacity} from 'react-native';
+import {View,
+       Text,
+       KeyboardAvoidingView,
+       StyleSheet,
+       ScrollView,
+       TouchableOpacity} from 'react-native';
+import {Input} from 'react-native-elements';
 import MyHeader from '../components/MyHeader'
 import db from '../config'
 import firebase from 'firebase'
@@ -61,8 +67,8 @@ componentDidMount(){
               <View style={{flex:1, alignItems: 'center',justifyContent: 'center'}} >
                 <MyHeader title="Settings"/>
                 <View style={{flex:1,width:'100%',alignItems: 'center'}}>
-                <TextInput
-                  style={styles.formTextInput}
+                <Input
+                  style={styles.formInput}
                   placeholder ={"First Name"}
                   maxLength ={8}
                   onChangeText={(text)=>{
@@ -72,8 +78,8 @@ componentDidMount(){
                   }}
                   value ={this.state.firstName}
                 />
-                <TextInput
-                  style={styles.formTextInput}
+                <Input
+                  style={styles.formInput}
                   placeholder ={"Last Name"}
                   maxLength ={8}
                   onChangeText={(text)=>{
@@ -83,8 +89,8 @@ componentDidMount(){
                   }}
                     value ={this.state.lastName}
                 />
-                <TextInput
-                  style={styles.formTextInput}
+                <Input
+                  style={styles.formInput}
                   placeholder ={"Contact"}
                   maxLength ={10}
                   keyboardType={'numeric'}
@@ -95,8 +101,8 @@ componentDidMount(){
                   }}
                     value ={this.state.contact}
                 />
-                <TextInput
-                  style={styles.formTextInput}
+                <Input
+                  style={styles.formInput}
                   placeholder ={"Address"}
                   multiline = {true}
                   onChangeText={(text)=>{
@@ -106,8 +112,8 @@ componentDidMount(){
                   }}
                     value ={this.state.address}
                 />
-                <TextInput
-                  style={styles.formTextInput}
+                <Input
+                  style={styles.formInput}
                   placeholder ={"Email"}
                   keyboardType ={'email-address'}
                   onChangeText={(text)=>{
@@ -135,7 +141,7 @@ componentDidMount(){
 
 
 const styles = StyleSheet.create({
-    formTextInput:{
+    formInput:{
       width:"75%",
       height:35,
       alignSelf:'center',
