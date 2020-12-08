@@ -16,7 +16,8 @@ export default class WelcomeScreen extends Component {
       lastName : "",
       mobileNumber:"",
       address : "",
-      confirmPassword : ""
+      confirmPassword : "",
+      currencyCode : ""
     }
   }
 
@@ -61,6 +62,18 @@ export default class WelcomeScreen extends Component {
       });
     }
 
+  }
+
+  getData(){
+    fetch("http://data.fixer.io/api/latest?access_key=2e7ba25ea4a4859452a16b605bc9e77a&format=1")
+    .then(response => {
+      return response.json();
+    }).then(responseData => {
+      var currencyCode = this.state.currencyCode,
+      var currency = reponseData.rates.INR,
+      var value = 69 / currency
+      console.log(value);
+    })
   }
 
   showModal = ()=>(
@@ -183,7 +196,10 @@ export default class WelcomeScreen extends Component {
           <Text style={{color:'#ff8a65'}}> A Trading Method </Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Text style={{color:'#ff5722', fontSize:18, fontWeight:'bold',marginLeft:55}}>USERNAME</Text>
+          <Text style={{color:'#ff5722',
+                        fontSize:18,
+                        fontWeight:'bold',
+                        marginLeft:55}}>USERNAME</Text>
           <View style={{alignItems:'center'}}>
             <TextInput
             style={styles.loginBox}
@@ -195,7 +211,10 @@ export default class WelcomeScreen extends Component {
             }}
             />
           </View>
-          <Text style={{color:'#ff5722', fontSize:18, fontWeight:'bold',marginLeft:55}}>PASSWORD</Text>
+          <Text style={{color:'#ff5722',
+                        fontSize:18,
+                        fontWeight:'bold',
+                        marginLeft:55}}>PASSWORD</Text>
           <View style={{alignItems:'center'}}>
             <TextInput
               style={styles.loginBox}
@@ -206,6 +225,21 @@ export default class WelcomeScreen extends Component {
                 })
               }}
             />
+          </View>
+          <Text style={{color:'#ff5722',
+                        fontSize:18,
+                        fontWeight:'bold',
+                        marginLeft:55}}>Country Code</Text>
+          <View style={{alignItems:'center'}}>
+            <TextInput
+             style={styles.loginBox}
+             placeholder={"Enter Country Currency Code"}
+             maxLength={8}
+             onChangeText={(text) => {
+               this.setState({
+                 currencyCode : text
+               })
+             }} />
           </View>
           <View style={{alignItems:'center'}}>
             <TouchableOpacity
